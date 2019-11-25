@@ -1,0 +1,3 @@
+Gwen is a Web Crawling Tool
+Usage: ./main.py website (-o output_file)
+Example: ./main.py https://null-byte.wonderhowto.com/ -o null_byte.txt
