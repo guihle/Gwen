@@ -18,6 +18,7 @@ file = args.o
 def url_handler(site):
     #Handle url
     global site_handled
+    site_handled = site
     if "http://" not in site:
         if "https://" not in site:
             site_handled = "https://" + site
