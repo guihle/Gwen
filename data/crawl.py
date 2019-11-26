@@ -22,7 +22,23 @@ def cr(soup, website_url, site, file):
                             if code == "200":
                                 links.append(link)
                                 print(link)
-
+        for link in soup.find_all('a', href=True):
+            link = link.get('href')
+            if link not in links:
+                    if link.startswith("http"):
+                        website_url = requests.get(link)
+                        code = str(website_url.status_code)
+                        if code == "200":
+                            links.append(link)
+                            print(link)
+                    elif link.startswith("/"):
+                        link = site + link
+                        if link not in links:
+                            website_url = requests.get(link)
+                            code = str(website_url.status_code)
+                            if code == "200":
+                                links.append(link)
+                                print(link)
         for i in links:
             website_url = requests.get(i)
             soup = BeautifulSoup(website_url.content,'html.parser',from_encoding="iso-8859-1")
